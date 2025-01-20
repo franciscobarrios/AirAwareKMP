@@ -34,7 +34,7 @@ fun App() {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(viewModel.getAqi())
+                        Text(viewModel.getText())
                     }
                 }
             }
