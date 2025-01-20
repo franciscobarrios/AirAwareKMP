@@ -9,11 +9,6 @@ import kotlinx.serialization.SerializationException
 import util.NetworkError
 import util.Result
 
-
-//https://api.waqi.info/feed/
-///feed/:city/?token=:token
-
-
 class AqiHttpClient(private val httpClient: HttpClient) {
     suspend fun getAqi(aqiKey: String): Result<AqiWrapperDto, NetworkError> {
         val response = try {
@@ -29,14 +24,14 @@ class AqiHttpClient(private val httpClient: HttpClient) {
         }
 
         return when (response.status.value) {
+            401 -> Result.Error(NetworkError.UNAUTHORIZED)
+            408 -> Result.Error(NetworkError.REQUEST_TIMEOUT)
+            in 500..599 -> Result.Error(NetworkError.SERVER_ERROR)
             in 200..299 -> {
                 val result = response.body<AqiWrapperDto>()
                 Result.Success(result)
             }
 
-            401 -> Result.Error(NetworkError.UNAUTHORIZED)
-            408 -> Result.Error(NetworkError.REQUEST_TIMEOUT)
-            in 500..599 -> Result.Error(NetworkError.SERVER_ERROR)
             else -> Result.Error(NetworkError.UNKNOWN)
         }
     }
