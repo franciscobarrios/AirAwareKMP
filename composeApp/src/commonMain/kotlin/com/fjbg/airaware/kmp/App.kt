@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fjbg.airaware.kmp.networking.AqiClient
-import io.ktor.client.HttpClient
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import util.onError
@@ -32,7 +31,10 @@ fun App(client: AqiClient) {
         ) {
             Button(onClick = {
                 scope.launch {
-                    client.getAqi().onSuccess {
+
+                    //-39.22;-72.25
+
+                    client.getAqi(-39.22, -72.25).onSuccess {
                         println(it)
                     }.onError {
                         println(it)

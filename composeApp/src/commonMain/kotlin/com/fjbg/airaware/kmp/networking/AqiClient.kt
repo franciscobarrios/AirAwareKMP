@@ -3,7 +3,9 @@ package com.fjbg.airaware.kmp.networking
 import com.fjbg.airaware.kmp.model.AqiDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
+import io.ktor.client.request.host
 import io.ktor.client.request.parameter
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
@@ -14,14 +16,17 @@ import util.Result
 
 class AqiClient(private val httpClient: HttpClient) {
 
-    //https://api.waqi.info/feed/geo:-39.22;-72.25/?token=4451728cc993ee1e86af7beeb147657bddd56d46
+    private val token = "4451728cc993ee1e86af7beeb147657bddd56d46"
 
-    suspend fun getAqi(): Result<AqiDto, NetworkError> {
+    //FIXME: handle invalid key error
+
+    suspend fun getAqi(lat: Double, lon: Double): Result<AqiDto, NetworkError> {
         val response = try {
-            httpClient.get(
-                urlString = "https://api.waqi.info/feed/geo:-39.22;-72.25/?token=4451728cc993ee1e86af7beeb147657bddd56d46"
-            ) {
-                parameter("", "")
+            //httpClient.get(urlString = "https://api.waqi.info/feed/geo:-39.22;-72.25/")
+            val str = "https://api.waqi.info/feed/geo:${lat};${lon}/"
+            httpClient.get(urlString = str)
+            {
+                parameter("token", token)
                 contentType(ContentType.Application.Json)
             }
         } catch (e: UnresolvedAddressException) {
