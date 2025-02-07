@@ -7,41 +7,43 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.fjbg.airaware.kmp.networking.AqiClient
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import util.onError
-import util.onSuccess
 
 @Composable
 @Preview
 fun App(client: AqiClient) {
     MaterialTheme {
+        val navController = rememberNavController()
 
-        val scope = rememberCoroutineScope()
+        NavHost(navController = navController, startDestination = "home") {
+            composable("home") {
 
-        Column(
-            Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
-        ) {
-            Button(onClick = {
-                scope.launch {
+                val viewModel = viewModel<MainViewModel> {
+                    MainViewModel(client)
+                }
 
-                    //-39.22;-72.25
+                val aqi = viewModel.getAqi.collectAsState()
 
-                    client.getAqi(-39.22, -72.25).onSuccess {
-                        println(it)
-                    }.onError {
-                        println(it)
+                Column(
+                    Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
+                ) {
+                    Button(onClick = {
+                        viewModel.getIAqi()
+                    }) {
+                        Text("Button")
                     }
                 }
-            }) {
-                Text("Button")
             }
         }
     }
