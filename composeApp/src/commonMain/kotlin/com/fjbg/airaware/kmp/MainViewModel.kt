@@ -13,6 +13,10 @@ class MainViewModel(private val client: AqiClient) : ViewModel() {
     private val _getAqi = MutableStateFlow("")
     val getAqi = _getAqi.asStateFlow()
 
+    init {
+        println("MainViewModel")
+    }
+
     fun getIAqi() {
         viewModelScope.launch {
             client.getAqi(-39.22, -722.25).collect {
