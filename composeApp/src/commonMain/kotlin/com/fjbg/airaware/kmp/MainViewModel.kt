@@ -1,12 +1,9 @@
 package com.fjbg.airaware.kmp
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.fjbg.airaware.kmp.networking.AqiClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
-import util.Result
 
 class MainViewModel(private val client: AqiClient) : ViewModel() {
 
@@ -17,7 +14,7 @@ class MainViewModel(private val client: AqiClient) : ViewModel() {
         println("MainViewModel")
     }
 
-    fun getIAqi() {
+    /*fun getIAqi() {
         viewModelScope.launch {
             client.getAqi(-39.22, -722.25).collect {
                 when (it) {
@@ -36,5 +33,5 @@ class MainViewModel(private val client: AqiClient) : ViewModel() {
                 }
             }
         }
-    }
+    }*/
 }

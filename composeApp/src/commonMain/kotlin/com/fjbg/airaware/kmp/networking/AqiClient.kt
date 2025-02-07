@@ -15,13 +15,13 @@ import util.NetworkError
 import util.Result
 
 
-class AqiClient(private val httpClient: HttpClient) {
+class AqiClient(/*private val httpClient: HttpClient*/) {
 
     private val token = "4451728cc993ee1e86af7beeb147657bddd56d46"
 
     //FIXME: handle invalid key error
 
-    suspend fun getAqi(lat: Double, lon: Double): Flow<Result<AqiDto, NetworkError>> {
+    /*suspend fun getAqi(lat: Double, lon: Double): Flow<Result<AqiDto, NetworkError>> {
         val response = try {
             val str = "https://api.waqi.info/feed/geo:${lat};${lon}/"
             httpClient.get(urlString = str) {
@@ -48,5 +48,5 @@ class AqiClient(private val httpClient: HttpClient) {
                 else -> Result.Error(NetworkError.UNKNOWN)
             }
         )
-    }
+    }*/
 }
