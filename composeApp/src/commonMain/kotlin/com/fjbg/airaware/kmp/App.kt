@@ -15,14 +15,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.fjbg.airaware.kmp.networking.AqiClient
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.currentKoinScope
 
 @Composable
 @Preview
-fun App(client: AqiClient) {
+fun App() {
     MaterialTheme {
         KoinContext {
             val navController = rememberNavController()
@@ -31,10 +30,6 @@ fun App(client: AqiClient) {
                 composable("home") {
 
                     val viewModel = koinViewModel<MainViewModel>()
-
-                    /*val viewModel = viewModel<MainViewModel> {
-                        MainViewModel(client)
-                    }*/
 
                     Column(
                         Modifier.fillMaxSize(),
@@ -45,7 +40,7 @@ fun App(client: AqiClient) {
                         )
                     ) {
                         Button(onClick = {
-                            //viewModel.getIAqi()
+                            viewModel.getAqi()
                         }) {
                             Text("Button")
                         }
