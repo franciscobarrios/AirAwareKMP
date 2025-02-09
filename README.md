@@ -1,6 +1,6 @@
 # AirAware – Technical Overview
 
-## AirAware is an open-source, cross-platform air quality monitoring application built using Kotlin Multiplatform (KMP). It provides real-time Air Quality Index (AQI) data by fetching information from aqicn.com and displays it alongside weather details such as temperature and atmospheric pressure.
+AirAware is an open-source, cross-platform air quality monitoring application built using Kotlin Multiplatform (KMP). It provides real-time Air Quality Index (AQI) data by fetching information from aqicn.com and displays it alongside weather details such as temperature and atmospheric pressure.
 
 ## Platforms & Architecture:
 
