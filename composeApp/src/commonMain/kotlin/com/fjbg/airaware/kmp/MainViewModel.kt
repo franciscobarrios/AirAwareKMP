@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fjbg.airaware.kmp.model.AqiDto
 import com.fjbg.airaware.kmp.networking.AqiRepository
-import com.fjbg.airaware.kmp.util.DEBUG
+import com.fjbg.airaware.kmp.util.debug
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -25,14 +25,14 @@ class MainViewModel(private val aqiRepository: AqiRepository) : ViewModel() {
             aqiRepository.getAqi(-39.22, -722.25).collect {
                 when (it) {
                     is Result.Error -> {
-                        if (DEBUG) {
+                        if (debug) {
                             println("Error: ${it.error.name}")
                         }
                         _getAqi.value = UiState.Error(it.error.name)
                     }
 
                     is Result.Success -> {
-                        if (DEBUG) {
+                        if (debug) {
                             println("Success - status: ${it.data.status}")
                         }
                         _getAqi.value = UiState.Success(it.data)

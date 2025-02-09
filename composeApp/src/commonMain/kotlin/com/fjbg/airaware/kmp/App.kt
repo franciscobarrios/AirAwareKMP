@@ -18,12 +18,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.fjbg.airaware.kmp.di.appModules
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
 import org.koin.compose.currentKoinScope
 
 @Composable
 fun App() {
-
     KoinApplication(application = {
         modules(appModules())
     }) {
@@ -43,13 +43,11 @@ fun App() {
                             Alignment.CenterVertically
                         )
                     ) {
-
                         when (state.value) {
                             is MainViewModel.UiState.Loading -> LoadingView()
                             is MainViewModel.UiState.Error -> ErrorView()
                             is MainViewModel.UiState.Success -> {}
                         }
-
                     }
                 }
             }
@@ -58,6 +56,7 @@ fun App() {
 }
 
 @Composable
+@Preview
 fun LoadingView() {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -68,6 +67,7 @@ fun LoadingView() {
 }
 
 @Composable
+@Preview
 fun ErrorView() {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -76,7 +76,6 @@ fun ErrorView() {
         Text("Something went wrong")
     }
 }
-
 
 @Composable
 inline fun <reified T : ViewModel> koinViewModel(): T {
