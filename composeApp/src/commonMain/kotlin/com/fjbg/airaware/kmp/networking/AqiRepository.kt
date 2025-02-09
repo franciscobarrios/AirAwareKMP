@@ -1,6 +1,7 @@
 package com.fjbg.airaware.kmp.networking
 
 import com.fjbg.airaware.kmp.model.AqiDto
+import com.fjbg.airaware.kmp.util.AQI_KEY
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -13,7 +14,7 @@ class AqiRepository(private val httpClient: HttpClient) {
 
     suspend fun getAqi(lat: Double, lon: Double): Flow<Result<AqiDto, NetworkError>> {
         val str =
-            "https://api.waqi.info/feed/geo:${lat};${lon}/?token=4451728cc993ee1e86af7beeb147657bddd56d46"
+            "https://api.waqi.info/feed/geo:${lat};${lon}/?token=$AQI_KEY"
         val response = httpClient.get(urlString = str)
         return flowOf(
             when (response.status.value) {
