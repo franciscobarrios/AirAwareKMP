@@ -1,14 +1,28 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+* AirAware – Technical Overview
+  
+    * AirAware is an open-source, cross-platform air quality monitoring application built using
+      Kotlin Multiplatform (KMP). It provides real-time Air Quality Index (AQI) data by fetching
+      information from aqicn.com and displays it alongside weather details such as temperature and
+      atmospheric pressure.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+* Platforms & Architecture:
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+- Supported Platforms: Android, iOS, Windows, macOS, and Linux
+- Core Logic: Written in Kotlin Multiplatform (KMP) to share business logic across all platforms.
+- Networking & Data Handling: Uses Ktor for API requests and Serialization for data parsing.
+- Location Services: Retrieves the user's location via platform-specific implementations to
+  determine the nearest air quality sensor.
 
+* UI Frameworks:
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+- Android & Desktop (Windows/macOS/Linux): Jetpack Compose (Compose Multiplatform)
+- iOS: SwiftUI with Kotlin/Native integration
+
+* Key Features:
+
+- Real-Time AQI Data: Pulls air quality data from aqicn.com based on the user’s location.
+- Color-Coded AQI Indicators: Visual representation of AQI severity.
+- Basic Weather Information: Displays temperature and atmospheric pressure.
+- 7-Day Air Quality Forecast: Provides a week-long prediction of AQI trends.
+- Cross-Platform Synchronization: Ensures consistent data retrieval and UI experience across
+  devices.
