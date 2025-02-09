@@ -21,6 +21,12 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
     )
 }
 
+fun appModules() = listOf(
+    commonModules,
+    provideHttpClient,
+    provideRepository,
+)
+
 val commonModules = module {
     viewModelOf(::MainViewModel)
 }

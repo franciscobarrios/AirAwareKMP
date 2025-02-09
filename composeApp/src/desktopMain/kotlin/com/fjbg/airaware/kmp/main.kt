@@ -1,15 +1,21 @@
 package com.fjbg.airaware.kmp
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.fjbg.airaware.kmp.di.initKoin
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 fun main() = application {
-    initKoin()
     Window(
         onCloseRequest = ::exitApplication,
-        title = "AirAwareKMP",
+        title = "AirAware",
     ) {
         App()
     }
+}
+
+@Preview
+@Composable
+fun AppDesktopPreview() {
+    App()
 }
