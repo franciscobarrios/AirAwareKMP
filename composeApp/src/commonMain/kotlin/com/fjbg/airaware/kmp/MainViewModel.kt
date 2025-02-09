@@ -14,7 +14,7 @@ class MainViewModel(private val aqiRepository: AqiRepository) : ViewModel() {
     val getAqi = _getAqi.asStateFlow()
 
     init {
-        println("MainViewModel")
+        getAqi()
     }
 
     fun getAqi() {

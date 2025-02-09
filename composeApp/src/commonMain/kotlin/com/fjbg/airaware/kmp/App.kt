@@ -39,15 +39,26 @@ fun App() {
                             Alignment.CenterVertically
                         )
                     ) {
-                        Button(onClick = {
-                            viewModel.getAqi()
-                        }) {
-                            Text("Button")
-                        }
+
                     }
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun AppPreview() {
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(
+            16.dp,
+            Alignment.CenterVertically
+        )
+    ) {
+
     }
 }
 

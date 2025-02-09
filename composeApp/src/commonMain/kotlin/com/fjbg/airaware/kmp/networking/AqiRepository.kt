@@ -12,7 +12,8 @@ import util.Result
 class AqiRepository(private val httpClient: HttpClient) {
 
     suspend fun getAqi(lat: Double, lon: Double): Flow<Result<AqiDto, NetworkError>> {
-        val str = "https://api.waqi.info/feed/geo:${lat};${lon}/?token=4451728cc993ee1e86af7beeb147657bddd56d46"
+        val str =
+            "https://api.waqi.info/feed/geo:${lat};${lon}/?token=4451728cc993ee1e86af7beeb147657bddd56d46"
         val response = httpClient.get(urlString = str)
         return flowOf(
             when (response.status.value) {
@@ -28,6 +29,5 @@ class AqiRepository(private val httpClient: HttpClient) {
                 else -> Result.Error(NetworkError.UNKNOWN)
             }
         )
-
     }
 }
