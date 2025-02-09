@@ -108,6 +108,11 @@ compose.desktop {
     }
 }
 
-dependencies {
+/*dependencies {
+    implementation(libs.androidx.ui.tooling.preview.android)
     debugImplementation(compose.uiTooling)
+}*/
+
+dependencies {
+    debugImplementation(libs.compose.ui.tooling)
 }
