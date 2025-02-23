@@ -5,12 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,12 +36,40 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppPreview() {
     Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceEvenly
+        modifier = Modifier.fillMaxSize(),
+        //verticalArrangement = Arrangement.
     ) {
-        UpperBox()
-        MiddleBox()
-        LowerBox()
+
+        Row(
+            modifier = Modifier
+                .background(Color.Green)
+                .fillMaxWidth()
+                .weight(.3f, true)
+            //.fillMaxHeight(.2f),
+        ) {
+            //AqiText()
+        }
+        Row(
+            //contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .background(Color.Red)
+                .fillMaxWidth()
+                .weight(.5f, true)
+            //.fillMaxHeight(.5f)
+        ) {
+            //AqiText()
+            //AqiCircle()
+        }
+
+        Row(
+            modifier = Modifier
+                .background(Color.Blue)
+                .fillMaxWidth()
+                .weight(.3f, true)
+            //.fillMaxHeight(.2f)
+        ) {
+            //AqiText()
+        }
     }
 }
 
@@ -50,35 +78,36 @@ fun UpperBox() {
     Row(
         modifier = Modifier
             .background(Color.Green)
-            .height(180.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .fillMaxHeight(.2f),
     ) {
-        AqiText()
+        //AqiText()
     }
 }
 
 @Composable
 fun MiddleBox() {
     Box(
+        contentAlignment = Alignment.Center,
         modifier = Modifier
             .background(Color.Red)
-            .height(320.dp),
-        contentAlignment = Alignment.Center,
+            .fillMaxWidth()
+            .fillMaxHeight(.5f)
     ) {
-        AqiText()
-        AqiCircle()
+        //AqiText()
+        //AqiCircle()
     }
 }
 
 @Composable
 fun LowerBox() {
-    Row(
+    Box(
         modifier = Modifier
             .background(Color.Blue)
-            .height(180.dp)
             .fillMaxWidth()
+            .fillMaxHeight(.2f)
     ) {
-        AqiText()
+        //AqiText()
     }
 }
 
