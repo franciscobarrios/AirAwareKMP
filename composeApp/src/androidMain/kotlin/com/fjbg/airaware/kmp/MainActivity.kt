@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
 fun AppPreview() {
     Column(
         modifier = Modifier.fillMaxSize(),
-        //verticalArrangement = Arrangement.
     ) {
 
         Box(
