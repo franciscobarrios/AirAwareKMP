@@ -7,8 +7,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -40,74 +38,36 @@ fun AppPreview() {
         //verticalArrangement = Arrangement.
     ) {
 
-        Row(
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
                 .background(Color.Green)
                 .fillMaxWidth()
-                .weight(.3f, true)
-            //.fillMaxHeight(.2f),
+                .weight(.2f, true)
+
         ) {
-            //AqiText()
+            AqiText()
         }
-        Row(
-            //contentAlignment = Alignment.Center,
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
                 .background(Color.Red)
                 .fillMaxWidth()
-                .weight(.5f, true)
-            //.fillMaxHeight(.5f)
+                .weight(.6f, true)
         ) {
-            //AqiText()
-            //AqiCircle()
+            AqiText()
+            AqiCircle()
         }
 
-        Row(
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
                 .background(Color.Blue)
                 .fillMaxWidth()
-                .weight(.3f, true)
-            //.fillMaxHeight(.2f)
+                .weight(.2f, true)
         ) {
-            //AqiText()
+            AqiText()
         }
-    }
-}
-
-@Composable
-fun UpperBox() {
-    Row(
-        modifier = Modifier
-            .background(Color.Green)
-            .fillMaxWidth()
-            .fillMaxHeight(.2f),
-    ) {
-        //AqiText()
-    }
-}
-
-@Composable
-fun MiddleBox() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .background(Color.Red)
-            .fillMaxWidth()
-            .fillMaxHeight(.5f)
-    ) {
-        //AqiText()
-        //AqiCircle()
-    }
-}
-
-@Composable
-fun LowerBox() {
-    Box(
-        modifier = Modifier
-            .background(Color.Blue)
-            .fillMaxWidth()
-            .fillMaxHeight(.2f)
-    ) {
-        //AqiText()
     }
 }
 
