@@ -14,6 +14,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -36,21 +38,20 @@ fun AppPreview() {
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
-
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .background(Color.Green)
+                .background(Color.White)
                 .fillMaxWidth()
                 .weight(.2f, true)
 
         ) {
-            AqiText()
+            CityInfo()
         }
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .background(Color.Red)
+                .background(Color.White)
                 .fillMaxWidth()
                 .weight(.6f, true)
         ) {
@@ -59,23 +60,37 @@ fun AppPreview() {
         }
 
         Box(
-            contentAlignment = Alignment.Center,
+            contentAlignment = Alignment.TopCenter,
             modifier = Modifier
-                .background(Color.Blue)
+                .background(Color.White)
                 .fillMaxWidth()
                 .weight(.2f, true)
         ) {
-            AqiText()
+
+            History()
+            History()
+            History()
         }
     }
 }
 
 @Composable
+fun CityInfo() {
+    Text(
+        "Bangkok, Thailand",
+        fontSize = 32.sp,
+        color = Color.Gray,
+        modifier = Modifier.padding(16.dp),
+        maxLines = 1
+    )
+}
+
+@Composable
 fun AqiText() {
     Text(
-        "888",
+        "98",
         fontSize = 102.sp,
-        color = Color.Gray,
+        color = Color.DarkGray,
         modifier = Modifier.padding(16.dp),
         maxLines = 1
     )
@@ -96,4 +111,21 @@ fun AqiCircle() {
             )
         }
     )
+}
+
+@Composable
+fun History() {
+    Canvas(
+        modifier = Modifier
+            .padding(16.dp),
+        onDraw = {
+            drawRoundRect(
+                color = Color.Red,
+                cornerRadius = CornerRadius(10f, 10f),
+                size = Size(32f, 240f)
+            )
+        }
+    )
+
+    Text("M")
 }
