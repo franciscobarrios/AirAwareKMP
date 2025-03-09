@@ -34,6 +34,7 @@ class MainViewModel(private val aqiRepository: AqiRepository) : ViewModel() {
                     is Result.Success -> {
                         if (debug) {
                             println("Success - status: ${it.data.status}")
+                            println("DATA::: ${it.data.data}")
                         }
                         _getAqi.value = UiState.Success(it.data)
                     }
