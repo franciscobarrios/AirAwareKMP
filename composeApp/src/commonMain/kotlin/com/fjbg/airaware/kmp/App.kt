@@ -28,6 +28,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.fjbg.airaware.kmp.di.appModules
+import com.fjbg.airaware.kmp.model.AqiDto
 import org.koin.compose.KoinApplication
 import org.koin.compose.currentKoinScope
 
@@ -53,10 +54,19 @@ fun App() {
                         )
                     ) {
                         when (state.value) {
-                            is MainViewModel.UiState.Loading -> LoadingView()
-                            is MainViewModel.UiState.Error -> ErrorView()
+                            is MainViewModel.UiState.Loading -> {
+                                LoadingView()
+                            }
+                            is MainViewModel.UiState.Error -> {
+                                ErrorView()
+                            }
                             is MainViewModel.UiState.Success -> {
                                 Content()
+
+                                (state.value as MainViewModel.UiState.Success).data
+
+                                //println("DATA::: ${(state.value.data}")
+
                             }
                         }
                     }
